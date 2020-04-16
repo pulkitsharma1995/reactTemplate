@@ -1,64 +1,86 @@
 import React, { Component } from "react";
-import ContentWrapper from "../Layout/ContentWrapper";
 import { Row, Col, Card, CardBody, CardTitle, CardText } from "reactstrap";
+
 import Datatable from "../Tables/Datatable";
+import ContentWrapper from "../Layout/ContentWrapper";
+import { projectBoard } from "../Utility/Constants";
+import "../../styles/app/extras/bugTracker.scss";
+
+// Note: API not integrated yet, so added JSON
+const projectData = [
+  {
+    projectName: "AMN Wonolo",
+    projectCategory: "SoftWare Project",
+    projectType: "Classic Software",
+    projectKey: "AWON",
+    projectLead: "Nikhil Agarwal",
+    projectLogoUrl: "img/wonolo.jpg",
+    projectLeadImageUrl: "img/nikhilsir.png"
+  },
+  {
+    projectName: "Synergy Consulting",
+    projectCategory: "SoftWare Project",
+    projectType: "ESS Software",
+    projectKey: "SCON",
+    projectLead: "Nikhil Agarwal",
+    projectLogoUrl: "img/synergyLogo.jpeg",
+    projectLeadImageUrl: "img/nikhilsir.png"
+  },
+  {
+    projectName: "Synergy Consulting",
+    projectCategory: "SoftWare Project",
+    projectType: "ESS Software",
+    projectKey: "SCON",
+    projectLead: "Nikhil Agarwal",
+    projectLogoUrl: "img/synergyLogo.jpeg",
+    projectLeadImageUrl: "img/nikhilsir.png"
+  }
+];
 
 class BugTracker extends Component {
+  static defaultProps = {
+    projectName: "AMN Wonolo",
+    projectCategory: "SoftWare Project",
+    projectType: "Classic Software",
+    projectKey: "AWON",
+    projectLead: "Nikhil Agarwal",
+    projectLogoUrl: "img/wonolo.jpg"
+  };
   render() {
     return (
       // TODO: All images path needs to be changed, SRC will come from API.
       // API Integration needs to be done for all hardcoded data.
       <ContentWrapper>
-        <div className="content-heading">Projects</div>
+        <div className="content-heading">{projectBoard.projectsHeading}</div>
         <Row>
-          <Col lg="4">
-            <div className="mb-4">
-              <Card className="card-default mb-3">
-                <CardBody>
-                  <CardText>
-                    <Row>
-                      <Col lg="4">
-                        <img
-                          src="img/wonolo.jpg"
-                          style={{ width: "100%" }}
-                        ></img>
-                      </Col>
-                      <Col lg="8">
-                        <h4>
-                          <b>AMN Wonolo</b>
-                        </h4>
-                        <CardTitle>Software Project</CardTitle>
-                      </Col>
-                    </Row>
-                  </CardText>
-                </CardBody>
-              </Card>
-            </div>
-          </Col>
-          <Col lg="4">
-            <div className="mb-4">
-              <Card className="card-default mb-3">
-                <CardBody>
-                  <CardText>
-                    <Row>
-                      <Col lg="4">
-                        <img
-                          src="img/synergyLogo.jpeg"
-                          style={{ width: "100%" }}
-                        ></img>
-                      </Col>
-                      <Col lg="8">
-                        <h4>
-                          <b>Synergy Consulting</b>
-                        </h4>
-                        <CardTitle>Software Project</CardTitle>
-                      </Col>
-                    </Row>
-                  </CardText>
-                </CardBody>
-              </Card>
-            </div>
-          </Col>
+          {projectData.map(data => {
+            return (
+              <Col lg="4">
+                <div className="mb-4">
+                  <Card className="card-default mb-3">
+                    <CardBody>
+                      <CardText>
+                        <Row>
+                          <Col lg="4" xs="4">
+                            <img
+                              src={data.projectLogoUrl}
+                              className="card-project-logo"
+                            ></img>
+                          </Col>
+                          <Col lg="8" xs="8">
+                            <h4>
+                              <b>{data.projectName}</b>
+                            </h4>
+                            <CardTitle>{data.projectCategory}</CardTitle>
+                          </Col>
+                        </Row>
+                      </CardText>
+                    </CardBody>
+                  </Card>
+                </div>
+              </Col>
+            );
+          })}
           <Col lg="12">
             <div className="card b">
               <div className="card-body">
@@ -73,52 +95,28 @@ class BugTracker extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>
-                          <img
-                            src="img/wonolo.jpg"
-                            style={{ width: "40px", marginRight: "2%" }}
-                          ></img>{" "}
-                          AMN Wonolo
-                        </td>
-                        <td>AWON</td>
-                        <td>Classic Software</td>
-                        <td>
-                          <img
-                            src="img/nikhilsir.png"
-                            style={{
-                              width: "30px",
-                              marginRight: "2%",
-                              height: "30px",
-                              borderRadius: "50%",
-                            }}
-                          ></img>{" "}
-                          Nikhil Agarwal
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <img
-                            src="img/synergyLogo.jpeg"
-                            style={{ width: "40px", marginRight: "2%" }}
-                          ></img>{" "}
-                          Synergy Consulting
-                        </td>
-                        <td>SCON</td>
-                        <td>ESS Software</td>
-                        <td>
-                          <img
-                            src="img/nikhilsir.png"
-                            style={{
-                              width: "30px",
-                              marginRight: "2%",
-                              height: "30px",
-                              borderRadius: "50%",
-                            }}
-                          ></img>{" "}
-                          Nikhil Agarwal
-                        </td>
-                      </tr>
+                      {projectData.map(data => {
+                        return (
+                          <tr>
+                            <td>
+                              <img
+                                src={data.projectLogoUrl}
+                                className="table-project-logo"
+                              ></img>{" "}
+                              {data.projectName}
+                            </td>
+                            <td>{data.projectKey}</td>
+                            <td>{data.projectType}</td>
+                            <td>
+                              <img
+                                src={data.projectLeadImageUrl}
+                                className="table-project-lead-image"
+                              ></img>{" "}
+                              {data.projectLead}
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </Datatable>
