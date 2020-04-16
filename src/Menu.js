@@ -123,12 +123,8 @@ const Menu = [
     //translate: "sidebar.nav.DASHBOARD",
     submenu: [
       {
-        name: "Your Team",
-        path: "/buttons",
-      },
-      {
-        name: "Individual List",
-        path: "/buttons",
+        name: "Manage Team",
+        path: "/people",
       },
     ],
   },

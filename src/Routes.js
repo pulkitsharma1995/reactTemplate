@@ -110,6 +110,8 @@ const BlogArticleView = lazy(() => import("./components/Blog/BlogArticleView"));
 
 const ForumHome = lazy(() => import("./components/Forum/ForumHome"));
 
+const PeopleHome = lazy(() => import("./components/Bundle/people"));
+
 // List of routes that uses the page layout
 // listed here to Switch between layouts
 // depending on the current pathname
@@ -330,6 +332,9 @@ const Routes = ({ location }) => {
                   <Route path="/vote-links" component={waitFor(VoteLinks)} />
 
                   <Route path="/forum" component={waitFor(ForumHome)} />
+
+                  {/* Bundle */}
+                  <Route path="/people" component={waitFor(PeopleHome)} />
 
                   <Redirect to="/dashboardv1" />
                 </Switch>
