@@ -17,7 +17,7 @@ const Menu = [
   {
     name: "Projects",
     icon: "icon-grid",
-    path: "/widgets",
+    //path: "/widgets",
     //translate: "sidebar.nav.WIDGETS",
     submenu: [
       {
@@ -27,7 +27,7 @@ const Menu = [
       },
       {
         name: "Project Board",
-        path: "/buttons",
+        path: "/project-board",
         //translate: "sidebar.nav.element.BUTTON",
       },
       {
