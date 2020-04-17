@@ -110,7 +110,7 @@ const BlogArticleView = lazy(() => import("./components/Blog/BlogArticleView"));
 
 const ForumHome = lazy(() => import("./components/Forum/ForumHome"));
 
-const PeopleHome = lazy(() => import("./components/Bundle/people"));
+const PeopleHome = lazy(() => import("./ui/people"));
 
 // List of routes that uses the page layout
 // listed here to Switch between layouts

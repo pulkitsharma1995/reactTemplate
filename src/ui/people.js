@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import Contacts from "../Extras/Contacts";
-import TeamViewer from "../Extras/TeamViewer";
+import Contacts from "../components/Extras/Contacts";
+import TeamViewer from "../components/Extras/TeamViewer";
 
 export default class People extends Component {
   constructor() {
