@@ -3,9 +3,14 @@ export const projectBoard = {
 };
 
 export const teamViewer = {
-  TEAM_BUDGET: "BUDGET",
-  TASKS: "TASKS",
   AVAILABITY: "AVAILABITY",
   MANAGE_TEAM: "Manage Team",
+  TASKS: "TASKS",
+  TEAM_BUDGET: "BUDGET",
   YOUR_TEAM: "Your Teams",
+};
+
+export const contactList = {
+  PEOPLE: "PEOPLE",
+  VIEW: "VIEW",
 };

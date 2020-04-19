@@ -1,37 +1,60 @@
 import React, { Component } from "react";
-import { Row, Col, Card, CardBody, CardFooter } from "reactstrap";
+import ScrollMenu from "react-horizontal-scrolling-menu";
+import { Col, Card, CardBody, CardFooter } from "reactstrap";
 
 import ContentWrapper from "../Layout/ContentWrapper";
+import { contactList } from "../Utility/Constants";
 
 const ContactCard = (props) => (
-  <Card className="card-default">
-    <CardBody className="text-center">
-      <img
-        className="mb-2 img-fluid rounded-circle thumb64"
-        src={props.imgsrc}
-        alt="Contact"
-      />
-      <h4>{props.name}</h4>
-      <p>{props.desc}</p>
-    </CardBody>
-    <CardFooter className="d-flex">
-      <div>
-        <button type="button" className="btn btn-xs btn-primary">
-          Send message
-        </button>
-      </div>
-      <div className="ml-auto">
-        <button type="button" className="btn btn-xs btn-secondary">
-          View
-        </button>
-      </div>
-    </CardFooter>
-  </Card>
+  <Col>
+    <Card className="card-default" style={{ width: 200 }}>
+      <CardBody className="text-center">
+        <img
+          className="mb-2 img-fluid rounded-circle thumb64"
+          src={props.imgsrc}
+          alt="Contact"
+        />
+        <h4>{props.name}</h4>
+        <p>{props.desc}</p>
+      </CardBody>
+      <CardFooter className="d-flex">
+        <div className="ml-auto">
+          <button type="button" className="btn btn-xs btn-secondary">
+            {contactList.VIEW}
+          </button>
+        </div>
+      </CardFooter>
+    </Card>
+  </Col>
 );
 
+export const Menu = (employeeList, selected) =>
+  employeeList.map((el, index) => {
+    const { name } = el;
+    const { imgsrc } = el;
+    const { desc } = el;
+    return (
+      <ContactCard
+        desc={desc}
+        imgsrc={imgsrc}
+        key={index}
+        name={name}
+        selected={selected}
+      />
+    );
+  });
+
 class Contacts extends Component {
+  constructor(props) {
+    super(props);
+    // call it again if items count changes
+    console.log("props", props.employeeList);
+    this.menuItems = Menu(this.props.employeeList, this.state.selected);
+  }
+
   state = {
     dropdownOpen: false,
+    selected: "",
   };
 
   toggle = () => {
@@ -40,35 +63,28 @@ class Contacts extends Component {
     });
   };
 
+  onSelect = (key) => {
+    this.setState({ selected: key });
+  };
+
   render() {
+    const { selected } = this.state;
+    const menu = this.menuItems;
     return (
       <ContentWrapper>
         <Col style={{ padding: 0 }} lg="12" sm="12">
-          <label style={{ fontSize: 20 }}>People</label>
+          <label style={{ fontSize: 20 }}>{contactList.PEOPLE}</label>
         </Col>
-        <Row>
-          <Col lg="4" sm="6">
-            <ContactCard
-              imgsrc="img/user/02.jpg"
-              name="Audrey Hunt"
-              desc="Hello, I'm a just a dummy contact in your contact list and this is my presentation text. Have fun!"
-            />
-          </Col>
-          <Col lg="4" sm="6">
-            <ContactCard
-              imgsrc="img/user/03.jpg"
-              name="Leonard Price"
-              desc="Hello, I'm a just a dummy contact in your contact list and this is my presentation text. Have fun!"
-            />
-          </Col>
-          <Col lg="4" sm="6">
-            <ContactCard
-              imgsrc="img/user/04.jpg"
-              name="Jamie Stephens"
-              desc="Hello, I'm a just a dummy contact in your contact list and this is my presentation text. Have fun!"
-            />
-          </Col>
-        </Row>
+        <ScrollMenu
+          alignCenter={false}
+          data={menu}
+          dragging={true}
+          hideArrows={true}
+          onSelect={this.onSelect}
+          scrollBy={0}
+          selected={selected}
+          wheel={false}
+        />
       </ContentWrapper>
     );
   }

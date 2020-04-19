@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Progress, Tooltip } from "reactstrap";
+import { get } from "lodash";
 
 import ContentWrapper from "../Layout/ContentWrapper";
 import Sparkline from "../Common/Sparklines";
@@ -37,31 +38,6 @@ class BSTooltip extends Component {
   }
 }
 
-//TODO: API needs to be integrated.
-const teamData = [
-  {
-    employeeImgSrc: [
-      "img/user/02.jpg",
-      "img/user/04.jpg",
-      "img/user/03.jpg",
-      "img/user/05.jpg",
-      "img/user/06.jpg",
-      "img/user/07.jpg",
-    ],
-    noOfTasks: 9,
-    teamLeadImgSrc: "img/user/03.jpg",
-    teamName: "Frontend",
-    techStack: ["ReactJs", "NodeJs", "SQL"],
-  },
-  {
-    employeeImgSrc: ["img/user/02.jpg", "img/user/07.jpg"],
-    noOfTasks: 16,
-    teamLeadImgSrc: "img/user/03.jpg",
-    teamName: "Backend",
-    techStack: ["AWS", "NodeJs", "SQL"],
-  },
-];
-
 class TeamViewer extends Component {
   static defaultProps = {
     employeeImgSrc: ["img/user/03.jpg"],
@@ -72,6 +48,7 @@ class TeamViewer extends Component {
   };
 
   render() {
+    const { teamData } = this.props;
     return (
       <ContentWrapper>
         <Col style={{ padding: 0 }} lg="12" sm="12">
@@ -79,22 +56,26 @@ class TeamViewer extends Component {
         </Col>
         <Row>
           {teamData.map((team) => {
+            const employeeImgSrc = get(team, "employeeImgSrc", []);
+            const teamLeadImgSrc = get(team, "teamLeadImgSrc", "");
+            const teamName = get(team, "teamName", "");
+            const techStack = get(team, "techStack", []);
             return (
               <Col xl="4" lg="6">
                 {/* Team Card */}
                 <div className="card card-default">
                   <div className="card-header">
-                    <div className="card-title">{team.teamName}</div>
+                    <div className="card-title">{teamName}</div>
                   </div>
                   <div className="card-body bt">
                     <BSTooltip content="Team leader">
                       <img
                         className="rounded-circle thumb48"
-                        src={team.teamLeadImgSrc}
+                        src={teamLeadImgSrc}
                         alt="project member"
                       />
                     </BSTooltip>
-                    {team.employeeImgSrc.map((images) => {
+                    {employeeImgSrc.map((images) => {
                       return (
                         <a className="inline mr-1" href="">
                           <img
@@ -149,7 +130,7 @@ class TeamViewer extends Component {
                   </div>
                   <div className="card-body">
                     <ul className="list-inline m-0">
-                      {team.techStack.map((data) => {
+                      {techStack.map((data) => {
                         return (
                           <li className="list-inline-item">
                             <div className="badge bg-gray">{data}</div>
