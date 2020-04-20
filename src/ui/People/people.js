@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import Contacts from "../components/Extras/Contacts";
-import TeamViewer from "../components/Extras/TeamViewer";
+import Contacts from "../../components/Extras/Contacts";
+import TeamViewer from "../../components/Extras/TeamViewer";
 
 //TODO: API needs to be integrated.
 const employeeList = [

@@ -6,11 +6,11 @@ const Menu = [
     submenu: [
       {
         name: "Assigned to me",
-        path: "/dashboardv1",
+        path: "/assigned-task",
       },
       {
         name: "Starred",
-        path: "/dashboardv2",
+        path: "/starred-task",
       },
     ],
   },
@@ -22,7 +22,7 @@ const Menu = [
     submenu: [
       {
         name: "Add Project",
-        path: "/buttons",
+        path: "/add-project",
         //translate: "sidebar.nav.element.BUTTON",
       },
       {
@@ -32,32 +32,32 @@ const Menu = [
       },
       {
         name: "Backlog View",
-        path: "/buttons",
+        path: "/backlog-view",
         //translate: "sidebar.nav.element.BUTTON",
       },
       {
         name: "Project Settings",
-        path: "/buttons",
+        path: "/project-settings",
         //translate: "sidebar.nav.element.BUTTON",
       },
       {
         name: "Project Access",
-        path: "/buttons",
+        path: "/project-access",
         //translate: "sidebar.nav.element.BUTTON",
       },
       {
         name: "Sprint Board",
-        path: "/buttons",
+        path: "/sprint-board",
         //translate: "sidebar.nav.element.BUTTON",
       },
       {
         name: "Roadmap",
-        path: "/buttons",
+        path: "/roadmap",
         //translate: "sidebar.nav.element.BUTTON",
       },
       {
         name: "Release",
-        path: "/buttons",
+        path: "/release",
         //translate: "sidebar.nav.element.BUTTON",
       },
     ],
@@ -69,51 +69,51 @@ const Menu = [
     submenu: [
       {
         name: "Project Template",
-        path: "/buttons",
+        path: "/project-template",
       },
       {
         name: "Project Type",
-        path: "/dashboardv2",
+        path: "/project-type",
       },
       {
         name: "Project Category",
-        path: "/dashboardv2",
+        path: "/project-category",
       },
       {
         name: "Issue Types",
-        path: "/dashboardv2",
+        path: "/issue-types",
       },
       {
         name: "Ticket Stage Config",
-        path: "/dashboardv2",
+        path: "/ticket-config",
       },
       {
         name: "Ticket Workflow",
-        path: "/dashboardv2",
+        path: "/ticket-workflow",
       },
       {
         name: "Labels",
-        path: "/dashboardv2",
+        path: "/labels",
       },
       {
         name: "Linked Issue Types",
-        path: "/dashboardv2",
+        path: "/linked-issue-type",
       },
       {
         name: "Resolution",
-        path: "/dashboardv2",
+        path: "/resolution",
       },
       {
         name: "Components",
-        path: "/dashboardv2",
+        path: "/components",
       },
       {
         name: "Issue Priority",
-        path: "/dashboardv2",
+        path: "/issue-priority",
       },
       {
         name: "Issue Variables",
-        path: "/dashboardv2",
+        path: "/issue-variables",
       },
     ],
   },
@@ -135,7 +135,7 @@ const Menu = [
     submenu: [
       {
         name: "Create New Ticket",
-        path: "/buttons",
+        path: "/create-task",
       },
     ],
   },

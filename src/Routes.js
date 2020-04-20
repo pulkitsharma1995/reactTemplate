@@ -110,7 +110,36 @@ const BlogArticleView = lazy(() => import("./components/Blog/BlogArticleView"));
 
 const ForumHome = lazy(() => import("./components/Forum/ForumHome"));
 
-const PeopleHome = lazy(() => import("./ui/people"));
+//UI imports
+const AddProject = lazy(() => import("./ui/Projects/addProject"));
+const BacklogView = lazy(() => import("./ui/Projects/backlogView"));
+const CreateTask = lazy(() => import("./ui/CreateTask/createTask"));
+const PeopleHome = lazy(() => import("./ui/People/people"));
+const ProjectAccess = lazy(() => import("./ui/Projects/access"));
+const ProjectSettings = lazy(() => import("./ui/Projects/settings"));
+const Release = lazy(() => import("./ui/Projects/Release"));
+const Roadmap = lazy(() => import("./ui/Projects/Roadmap"));
+const SprintBoard = lazy(() => import("./ui/Projects/sprintBoard"));
+const AssignedTask = lazy(() => import("./ui/MyWork/AssignedTask"));
+const StarredTask = lazy(() => import("./ui/MyWork/Starred"));
+const Component = lazy(() => import("./ui/Configurations/Component"));
+const IssuePriority = lazy(() => import("./ui/Configurations/IssuePriority"));
+const IssueType = lazy(() => import("./ui/Configurations/IssueType"));
+const IssueVariables = lazy(() => import("./ui/Configurations/IssueVariables"));
+const Labels = lazy(() => import("./ui/Configurations/Labels"));
+const LinkedIssueType = lazy(() =>
+  import("./ui/Configurations/LinkedIssueType")
+);
+const ProjectCategory = lazy(() =>
+  import("./ui/Configurations/ProjectCategory")
+);
+const ProjectTemplate = lazy(() =>
+  import("./ui/Configurations/ProjectTemplate")
+);
+const ProjectType = lazy(() => import("./ui/Configurations/ProjectType"));
+const Resolution = lazy(() => import("./ui/Configurations/Resolution"));
+const TicketConfig = lazy(() => import("./ui/Configurations/TicketConfig"));
+const TicketWorkflow = lazy(() => import("./ui/Configurations/TicketWorkflow"));
 
 // List of routes that uses the page layout
 // listed here to Switch between layouts
@@ -133,9 +162,12 @@ const Routes = ({ location }) => {
   //      'rag-fadeIn'
   //      'rag-fadeInRight'
   //      'rag-fadeInLeft'
-
+  console.log(
+    "listofPages.indexOf(location.pathname) ",
+    listofPages.indexOf(location.pathname),
+    location.pathname
+  );
   const animationName = "rag-fadeIn";
-
   if (listofPages.indexOf(location.pathname) > -1) {
     return (
       // Page Layout component wrapper
@@ -333,8 +365,72 @@ const Routes = ({ location }) => {
 
                   <Route path="/forum" component={waitFor(ForumHome)} />
 
-                  {/* Bundle */}
+                  {/* UI */}
                   <Route path="/people" component={waitFor(PeopleHome)} />
+                  <Route path="/create-task" component={waitFor(CreateTask)} />
+                  <Route path="/add-project" component={waitFor(AddProject)} />
+                  <Route
+                    path="/backlog-view"
+                    component={waitFor(BacklogView)}
+                  />
+                  <Route
+                    path="/project-settings"
+                    component={waitFor(ProjectSettings)}
+                  />
+                  <Route
+                    path="/project-access"
+                    component={waitFor(ProjectAccess)}
+                  />
+                  <Route
+                    path="/sprint-board"
+                    component={waitFor(SprintBoard)}
+                  />
+                  <Route path="/roadmap" component={waitFor(Roadmap)} />
+                  <Route path="/release" component={waitFor(Release)} />
+                  <Route
+                    path="/assigned-task"
+                    component={waitFor(AssignedTask)}
+                  />
+                  <Route
+                    path="/starred-task"
+                    component={waitFor(StarredTask)}
+                  />
+                  <Route
+                    path="/project-template"
+                    component={waitFor(ProjectTemplate)}
+                  />
+                  <Route
+                    path="/project-type"
+                    component={waitFor(ProjectType)}
+                  />
+                  <Route
+                    path="/project-category"
+                    component={waitFor(ProjectCategory)}
+                  />
+                  <Route path="/issue-types" component={waitFor(IssueType)} />
+                  <Route
+                    path="/ticket-config"
+                    component={waitFor(TicketConfig)}
+                  />
+                  <Route
+                    path="/ticket-workflow"
+                    component={waitFor(TicketWorkflow)}
+                  />
+                  <Route path="/labels" component={waitFor(Labels)} />
+                  <Route
+                    path="/linked-issue-type"
+                    component={waitFor(LinkedIssueType)}
+                  />
+                  <Route path="/resolution" component={waitFor(Resolution)} />
+                  <Route path="/components" component={waitFor(Component)} />
+                  <Route
+                    path="/issue-priority"
+                    component={waitFor(IssuePriority)}
+                  />
+                  <Route
+                    path="/issue-variables"
+                    component={waitFor(IssueVariables)}
+                  />
 
                   <Redirect to="/dashboardv1" />
                 </Switch>
