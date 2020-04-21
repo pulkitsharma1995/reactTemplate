@@ -45,4 +45,16 @@
   &-top-margin {
     margin-top: 10px;
   }
+
+  &-rich-text-wrapper {
+    max-width: 720px;
+    border: 1px solid #dedbda;
+    border-radius: 3px;
+
+    .rdw-editor-main {
+      overflow: auto;
+      height: 100px;
+      background-color: white;
+    }
+  }
 }

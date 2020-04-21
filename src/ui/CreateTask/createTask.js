@@ -1,19 +1,26 @@
-import React, { Component } from "react";
-import { Select, Input, DatePicker, Checkbox, Button } from "antd";
 import "antd/dist/antd.css";
+import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
-import { createTask } from "../../components/Utility/Constants";
+import React, { Component } from "react";
+import { Editor } from "react-draft-wysiwyg";
+import { EditorState } from "draft-js";
+import { Select, Input, DatePicker, Checkbox, Button } from "antd";
+
+import { createTask, Options } from "../../components/Utility/Constants";
 
 const { Option } = Select;
-const { TextArea } = Input;
 
 export default class CreateTask extends Component {
   constructor() {
     super();
+    this.state = {
+      editorState: EditorState.createEmpty(),
+    };
     this.handleChange = this.handleChange.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onCheckedChange = this.onCheckedChange.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
+    this.onEditorStateChange = this.onEditorStateChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
   }
 
@@ -35,6 +42,12 @@ export default class CreateTask extends Component {
 
   onCheckedChange(e) {
     console.log(`checked = ${e.target.checked}`);
+  }
+
+  onEditorStateChange(editorState) {
+    this.setState({
+      editorState: editorState,
+    });
   }
 
   render() {
@@ -89,7 +102,12 @@ export default class CreateTask extends Component {
         </div>
         <div className="create-task-container">
           <label>{createTask.DESCRIPTION}</label>
-          <TextArea placeholder="Enter Description" />
+          <Editor
+            editorState={this.state.editorState}
+            wrapperClassName="create-task-rich-text-wrapper"
+            onEditorStateChange={this.onEditorStateChange}
+            toolbar={Options}
+          />
         </div>
         <div className="create-task-container">
           <label>{createTask.ASSIGNEE}</label>
